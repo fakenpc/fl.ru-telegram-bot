@@ -49,7 +49,7 @@ class ClearfiltersCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat_id = $message->getChat()->getId();
-        $text = "Фильтры проектов очишены.";
+        $text = "Фильтры проектов очищены.";
         
         FilterDB::initializeFilter();
         FilterDB::deleteFilter($chat_id);
