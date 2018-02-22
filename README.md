@@ -2,11 +2,11 @@
 Этот telegram бот присылает проекты https://fl.ru/, отфильтрованные по ключевым словам.
 Бот доступен по адресу @fl_ru_projects_bot https://t.me/fl_ru_projects_bot
 # Установка
-1. Скачать файлы zip арзивом или коммандой
+1. Скачать файлы zip арзивом или коммандой 
 git clone https://github.com/fakenpc/fl.ru-telegram-bot.git
 2. Для установки необходимо использовать composer.
 Если composer не установлен установить его коммандой. 
-curl -sS https://getcomposer.org/installer | php
+curl -sS https://getcomposer.org/installer | php;
 php composer.phar install
 3. Переименовать config_example.php в config.php
 4. Задать настроки в config.php
