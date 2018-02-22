@@ -3,3 +3,4 @@ config.php
 composer.lock
 /vendor/
 cookies
+*.pid

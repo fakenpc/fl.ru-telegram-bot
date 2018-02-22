@@ -30,6 +30,14 @@ try {
     // Enable MySQL
     $telegram->enableMySql($mysql_credentials);
 
+    $runned = RunDB::selectRun(null, 1);
+    
+    if($runned === false || count($runned) == 0) {
+    	// bot not runned
+    	print date('Y-m-d H:i:s', time()). " - No runned bot sessions or wrong mysql settings. \n";
+    	die;
+    }
+
 	$url = 'https://www.fl.ru/projects/';
 	$response = curlRequest($url);
 	//print $response;
@@ -39,6 +47,8 @@ try {
 	$dom->loadHTML($response);
 	$xpath = new DomXPath($dom);
 	$domNodeListItems = $xpath->query("//a[@class='b-post__link']");
+
+	$new_parsed_projects = 0;
 
 	for($i = 0; $i < $domNodeListItems->length; $i++) {
 		$href = $domNodeListItems->item($i)->attributes->getNamedItem("href")->nodeValue;
@@ -50,8 +60,9 @@ try {
 		$projects = ProjectDB::selectProject($id);
 		// if project not parsed
 		if($projects !== false && count($projects) == 0) {
-
+			$new_parsed_projects ++;
 			$response = curlRequest($url);
+			$response = str_replace('<br />', PHP_EOL, $response);
 
 			// parse project name
 			$dom = new DomDocument;
@@ -118,6 +129,8 @@ try {
 			//ProjectDB::updateProject(array('sended' => 1), array('id' => $chat_id));
 		}
 	}
+
+	print date('Y-m-d H:i:s', time()). " - Parsed projects: $new_parsed_projects \n";
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     echo $e->getMessage();
