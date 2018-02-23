@@ -40,6 +40,7 @@ try {
 
 	$url = 'https://www.fl.ru/projects/';
 	$response = curlRequest($url);
+	$response = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'.PHP_EOL.$response;
 	//print $response;
 
 	// parse fl.ru projects
@@ -62,6 +63,7 @@ try {
 		if($projects !== false && count($projects) == 0) {
 			$new_parsed_projects ++;
 			$response = curlRequest($url);
+			$response = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'.PHP_EOL.$response;
 			$response = str_replace('<br />', PHP_EOL, $response);
 
 			// parse project name
