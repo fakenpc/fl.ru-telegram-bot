@@ -16,4 +16,10 @@ $mysql_credentials = [
     'database' => 'examplebot',
 ];
 
+// Define the URL to your hook.php file
+$hook_url = 'https://your-domain/path/to/hook.php';
+
+// path to public key of self-signed certificate
+$certificate_path = 'webhook_cert.pem';
+
 ?>
