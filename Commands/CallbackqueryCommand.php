@@ -43,6 +43,10 @@ class CallbackqueryCommand extends SystemCommand
      * @var string
      */
     protected $version = '1.0.0';
+    /**
+     * @var bool
+     */
+    protected $need_mysql = true;
 
     /**
      * Command execute method
@@ -70,11 +74,6 @@ class CallbackqueryCommand extends SystemCommand
         $text = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
-
-        print $this->getName().PHP_EOL;
-        print $callback_data.PHP_EOL;
-        print "user_id $user_id\n";
-        print "chat_id $chat_id\n";
 
         @list($command, $command_data) = explode(" ", $callback_data, 2);
         $result = Request::emptyResponse();

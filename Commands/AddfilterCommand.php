@@ -39,6 +39,10 @@ class AddfilterCommand extends SystemCommand
      * @var bool
      */
     protected $private_only = true;
+    /**
+     * @var bool
+     */
+    protected $need_mysql = true;
 
     /**
      * Command execute method
