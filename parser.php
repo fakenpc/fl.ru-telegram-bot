@@ -94,7 +94,7 @@ try {
 				$body = trim($body);
 			}
 
-			$runned = RunDB::selectRun(null, 1);
+			// $runned = RunDB::selectRun(null, 1);
 			
 			foreach ($runned as $run) {
 				$chat_id = $run['chat_id'];
