@@ -15,7 +15,7 @@ curl -sS https://getcomposer.org/installer | php
 ```
 php composer.phar install
 ```
-3. Переименовать config_example.php в config.php
+3. Переименовать example_config.php в config.php
 4. Задать настроки в config.php
 5. Устаовить db.sql и /vendor/longman/telegram-bot/structure.sql
 6. Выставить права на выполнение, если необходимо
