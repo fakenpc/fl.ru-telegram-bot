@@ -11,6 +11,8 @@ require_once __DIR__.'/ProjectDB.php';
 require_once __DIR__.'/RunDB.php';
 require_once __DIR__.'/FilterDB.php';
 use Longman\TelegramBot\Request;
+use Longman\TelegramBot\DB;
+
 ProjectDB::initializeProject();
 RunDB::initializeRun();
 FilterDB::initializeFilter();
@@ -31,10 +33,14 @@ try {
     $telegram->enableMySql($mysql_credentials);
 
     $runned = RunDB::selectRun(null, 1);
+
+    if(!DB::isDbConnected()) {
+    	print date('Y-m-d H:i:s', time()). " - Can't connect to mysql database. \n";
+    }
     
     if($runned === false || count($runned) == 0) {
     	// bot not runned
-    	print date('Y-m-d H:i:s', time()). " - No runned bot sessions or wrong mysql settings. \n";
+    	print date('Y-m-d H:i:s', time()). " - No runned bot sessions. \n";
     	die;
     }
 

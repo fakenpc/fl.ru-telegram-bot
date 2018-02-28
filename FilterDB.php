@@ -108,20 +108,29 @@ class FilterDB extends DB
         }
     }
 
-    public static function deleteFilter($chat_id)
+    public static function deleteFilter($chat_id, $id = null)
     {
         if (!self::isDbConnected()) {
             return false;
         }
 
         try {
-            $sth = self::$pdo->prepare('DELETE FROM `' . TB_FILTER . '`
+            $sql = 'DELETE FROM `' . TB_FILTER . '`
                 WHERE `chat_id` = :chat_id
-            ');
+            ';
+            if($id !== null) {
+                $sql .= ' AND `id` = :id ';
+            }
+
+            $sth = self::$pdo->prepare($sql);
 
             // $date = self::getTimestamp();
 
             $sth->bindValue(':chat_id', $chat_id, PDO::PARAM_INT);
+
+            if($id !== null) {
+                $sth->bindValue(':id', $id, PDO::PARAM_INT);
+            }
 
             return $sth->execute();
         } catch (Exception $e) {

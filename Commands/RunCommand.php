@@ -49,7 +49,7 @@ class RunCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat_id = $message->getChat()->getId();
-        $text = "Отправка проектов запущенна. \n Используйте комманду /addfilter <word>, чтобы отфильтровать интересующие проекты.";
+        $text = "Отправка проектов запущенна. \nИспользуйте комманду /filters, чтобы отфильтровать интересующие проекты.";
         
         $data = [
             'chat_id' => $chat_id,

@@ -56,12 +56,11 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat_id = $message->getChat()->getId();
-        $text    = 'Привет фрилансер!'.PHP_EOL
-            .'Этот бот присылает проекты fl.ru, отфильтрованные по ключевым словам.'.PHP_EOL
-            .'/run - запуск'.PHP_EOL
-            .'/stop - остановка'.PHP_EOL
-            .'/addfilter <word> - фильтр проектов по словам, упомянутым в названии или описании проекта'.PHP_EOL
-            .'/clearfilters - удаление всех фильтров слов.';
+        $text    = "Привет фрилансер!".PHP_EOL
+            ."Этот бот присылает проекты fl.ru, отфильтрованные по ключевым словам.".PHP_EOL
+            ."\xE2\x96\xB6 /run - запуск".PHP_EOL
+            ."\xE2\x8F\xB8 /stop - остановка".PHP_EOL
+            ."\xF0\x9F\x88\x81 /filters - фильтр проектов по словам, упомянутым в названии или описании проекта".PHP_EOL;
 
         $data = [
             'chat_id' => $chat_id,
